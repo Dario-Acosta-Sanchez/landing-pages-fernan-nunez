@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Dental María Raya – Jaén</title>
+  <meta name="description" content="Clínica dental en Jaén. María Raya, especialista en odontología. Ortodoncia, implantes, blanqueamiento y más. Pide tu cita hoy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #00695c;
+      --teal-light: #26a69a;
+      --teal-bg: #e0f2f1;
+      --sky: #0288d1;
+      --dark: #0d1b2a;
+      --gray: #555;
+      --white: #fff;
+      --soft: #f8fcfc;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,.07);
+    }
+    .logo { font-size: 1.2rem; font-weight: 800; color: var(--teal); display: flex; align-items: center; gap: .5rem; }
+    .logo span { font-weight: 400; color: var(--gray); font-size: .95rem; }
+    nav a.cta-nav {
+      background: var(--teal); color: var(--white);
+      padding: .55rem 1.3rem; border-radius: 30px;
+      text-decoration: none; font-weight: 600; font-size: .9rem;
+      transition: background .2s;
+    }
+    nav a.cta-nav:hover { background: var(--teal-light); }
+
+    .hero {
+      min-height: 90vh;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, var(--teal-bg) 0%, #e8f5e9 50%, #f0f9f8 100%);
+      padding: 4rem 2rem;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+    .hero-text h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.2; color: var(--dark); margin-bottom: 1.2rem; }
+    .hero-text h1 em { font-style: normal; color: var(--teal); }
+    .hero-text p { font-size: 1.05rem; color: var(--gray); line-height: 1.7; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--white);
+      padding: .9rem 2rem; border-radius: 30px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: transform .2s, background .2s;
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--white); color: var(--teal);
+      padding: .9rem 2rem; border-radius: 30px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      border: 2px solid var(--teal);
+      transition: background .2s, color .2s;
+    }
+    .btn-secondary:hover { background: var(--teal); color: var(--white); }
+    .hero-card {
+      background: var(--white);
+      border-radius: 20px; padding: 2.5rem;
+      box-shadow: 0 8px 32px rgba(0,105,92,.12);
+    }
+    .hero-card .doc-avatar { width: 80px; height: 80px; background: var(--teal-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.2rem; }
+    .hero-card h3 { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: .3rem; }
+    .hero-card .titulo { color: var(--teal); font-size: .9rem; font-weight: 600; margin-bottom: 1rem; }
+    .hero-card .spec-list { list-style: none; }
+    .hero-card .spec-list li { font-size: .9rem; color: var(--gray); padding: .35rem 0; border-bottom: 1px solid #f0f9f8; display: flex; align-items: center; gap: .5rem; }
+    .hero-card .spec-list li:last-child { border: none; }
+    .hero-card a { display: block; margin-top: 1.5rem; background: var(--teal); color: var(--white); text-align: center; padding: .8rem; border-radius: 30px; font-weight: 700; text-decoration: none; transition: background .2s; }
+    .hero-card a:hover { background: var(--teal-light); }
+
+    .servicios { padding: 5rem 2rem; background: var(--white); }
+    .section-title { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: .5rem; }
+    .section-sub { text-align: center; color: var(--gray); font-size: 1rem; margin-bottom: 3rem; }
+    .cards { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--soft); border-radius: 16px; padding: 2rem 1.5rem;
+      text-align: center; transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,105,92,.12); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; color: var(--teal); }
+    .card p { font-size: .88rem; color: var(--gray); line-height: 1.6; }
+
+    .oferta { background: var(--teal); padding: 3rem 2rem; }
+    .oferta-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .oferta h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: var(--white); margin-bottom: .8rem; }
+    .oferta p { color: #b2dfdb; font-size: 1rem; margin-bottom: 1.5rem; }
+    .oferta .price-tag { display: inline-flex; align-items: baseline; gap: .3rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); border-radius: 50px; padding: .6rem 1.5rem; margin-bottom: 1.5rem; }
+    .oferta .price-tag .old { text-decoration: line-through; color: #80cbc4; font-size: 1rem; }
+    .oferta .price-tag .new { color: var(--white); font-size: 1.8rem; font-weight: 800; }
+    .oferta a { display: inline-block; background: var(--white); color: var(--teal); font-weight: 700; padding: .9rem 2rem; border-radius: 30px; text-decoration: none; font-size: 1rem; transition: transform .2s; }
+    .oferta a:hover { transform: translateY(-2px); }
+
+    .trust { background: var(--soft); padding: 4rem 2rem; }
+    .trust-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
+    .trust-stat h2 { font-size: 3rem; font-weight: 800; color: var(--teal); }
+    .trust-stat p { color: var(--gray); font-size: .95rem; margin-top: .3rem; }
+
+    .proceso { padding: 5rem 2rem; background: var(--white); }
+    .steps { max-width: 900px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+    .step { text-align: center; }
+    .step-icon { font-size: 2.5rem; margin-bottom: .8rem; }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; color: var(--teal); }
+    .step p { font-size: .88rem; color: var(--gray); line-height: 1.5; }
+
+    .testimonials { padding: 5rem 2rem; background: var(--teal-bg); }
+    .testi-grid { max-width: 900px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .testi-card { background: var(--white); border-radius: 16px; padding: 1.8rem; }
+    .stars { color: #f9a825; font-size: 1.1rem; margin-bottom: .8rem; }
+    .testi-card p { font-size: .92rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; font-style: italic; }
+    .testi-author { font-weight: 700; font-size: .88rem; color: var(--dark); }
+
+    .cta-section { padding: 5rem 2rem; background: var(--dark); text-align: center; }
+    .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: #aaa; font-size: 1rem; margin-bottom: 2rem; }
+
+    .contact { padding: 5rem 2rem; background: var(--white); }
+    .contact-inner { max-width: 700px; margin: 0 auto; }
+    .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-item .icon { font-size: 1.8rem; }
+    .contact-item h4 { font-weight: 700; font-size: .95rem; margin-bottom: .2rem; }
+    .contact-item p { color: var(--gray); font-size: .9rem; }
+
+    footer { background: var(--dark); color: #aaa; text-align: center; padding: 1.5rem; font-size: .85rem; }
+    footer strong { color: var(--white); }
+
+    @media (max-width: 700px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .hero-text { text-align: center; }
+      .hero-btns { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🦷 Clínica Dental <span>María Raya · Jaén</span></div>
+  <a class="cta-nav" href="tel:+34000000000">📅 Pedir cita</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Tu sonrisa perfecta con la <em>mejor especialista de Jaén</em></h1>
+      <p>Clínica dental con tratamientos de calidad, tecnología de última generación y la atención personalizada que mereces. Sin dolor, sin esperas.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:+34000000000">📅 Pedir cita ahora</a>
+        <a class="btn-secondary" href="#servicios">Ver tratamientos</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="doc-avatar">👩‍⚕️</div>
+      <h3>Dra. María Raya</h3>
+      <div class="titulo">Odontóloga especialista · Jaén</div>
+      <ul class="spec-list">
+        <li>🦷 Odontología general</li>
+        <li>😁 Ortodoncia invisible</li>
+        <li>🔩 Implantes dentales</li>
+        <li>✨ Blanqueamiento</li>
+        <li>👶 Odontología infantil</li>
+      </ul>
+      <a href="tel:+34000000000">📞 Llamar para cita</a>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <h2 class="section-title">Nuestros Tratamientos</h2>
+  <p class="section-sub">Soluciones para cada necesidad dental</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🦷</div>
+      <h3>Revisión y Limpieza</h3>
+      <p>Revisión completa, diagnóstico digital y limpieza profesional. La base de una buena salud oral.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">😁</div>
+      <h3>Ortodoncia</h3>
+      <p>Brackets metálicos, estéticos y alineadores invisibles (Invisalign). Para niños y adultos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔩</div>
+      <h3>Implantes</h3>
+      <p>Implantes de titanio de alta calidad. Recupera tu sonrisa y tu capacidad de masticar.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <h3>Blanqueamiento</h3>
+      <p>Blanqueamiento profesional en clínica o para usar en casa. Resultados visibles desde el primer día.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💎</div>
+      <h3>Carillas</h3>
+      <p>Carillas de porcelana para una sonrisa perfecta y natural. Sonrisa Hollywood.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👶</div>
+      <h3>Odontología Infantil</h3>
+      <p>Cuidamos los dientes de tus hijos desde pequeños. Ambiente amigable y sin miedo al dentista.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛡️</div>
+      <h3>Periodoncia</h3>
+      <p>Tratamiento de encías y prevención de la pérdida dental. Curetaje y mantenimiento.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🩻</div>
+      <h3>Radiología Digital</h3>
+      <p>Diagnóstico preciso con radiología digital de baja radiación. OPG y escáner 3D.</p>
+    </div>
+  </div>
+</section>
+
+<section class="oferta">
+  <div class="oferta-inner">
+    <h2>🎁 Primera visita con oferta especial</h2>
+    <p>Revisión completa + radiografía + limpieza dental</p>
+    <div class="price-tag">
+      <span class="old">89€</span>
+      <span class="new">49€</span>
+    </div>
+    <br/>
+    <a href="tel:+34000000000">Reservar mi oferta de bienvenida</a>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="trust-inner">
+    <div class="trust-stat"><h2>+1.500</h2><p>Pacientes atendidos</p></div>
+    <div class="trust-stat"><h2>12+</h2><p>Años de experiencia</p></div>
+    <div class="trust-stat"><h2>99%</h2><p>Satisfacción</p></div>
+    <div class="trust-stat"><h2>0</h2><p>Listas de espera</p></div>
+  </div>
+</section>
+
+<section class="proceso">
+  <h2 class="section-title">Tu primera visita, paso a paso</h2>
+  <p class="section-sub">Sin sorpresas, sin miedo — estamos contigo en todo momento</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon">📞</div>
+      <h3>Llama o escríbenos</h3>
+      <p>Reserva tu cita por teléfono, WhatsApp o correo. Respondemos el mismo día.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">🩻</div>
+      <h3>Diagnóstico completo</h3>
+      <p>Exploración oral y radiografía digital para evaluar tu salud bucal al detalle.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">📋</div>
+      <h3>Plan personalizado</h3>
+      <p>Te explicamos qué necesitas y te damos el presupuesto detallado sin compromiso.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon">😄</div>
+      <h3>Tratamiento y sonrisa</h3>
+      <p>Empezamos cuando tú quieras. Cómodo, sin dolor y con seguimiento post-tratamiento.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="section-title">Sonrisas que hablan por nosotros</h2>
+  <p class="section-sub">Pacientes reales de Jaén y provincia</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Me hice el tratamiento de ortodoncia invisible y quedé impresionada. La Dra. Raya es increíble, explica todo muy bien y se nota que le apasiona su trabajo."</p>
+      <div class="testi-author">— Pilar M., Jaén</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Llevé a mis dos hijos. Salieron encantados. Nada de lloros ni miedo al dentista. Tienen una manera de tratar a los niños que es un 10."</p>
+      <div class="testi-author">— Rosa G., Linares</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Me pusieron un implante y no sentí nada de dolor. La recuperación fue rapidísima. El resultado es natural e impresionante."</p>
+      <div class="testi-author">— Manuel C., Jaén</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>¿Cuándo fue tu última visita al dentista?</h2>
+  <p>No esperes más. Tu salud oral es parte de tu salud general. Reserva hoy.</p>
+  <a class="btn-primary" href="tel:+34000000000">📅 Pedir cita ahora</a>
+</section>
+
+<section class="contact" id="contacto">
+  <h2 class="section-title">Dónde estamos</h2>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Calle Principal, Jaén</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <div>
+          <h4>Teléfono</h4>
+          <p>+34 000 000 000</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">🕐</div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lun–Vie: 9:30–14:00 / 16:00–20:00<br>Sáb: Con cita previa</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📱</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p>+34 000 000 000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Clínica Dental María Raya</strong> · Jaén · Todos los derechos reservados © 2025
+</footer>
+
+</body>
+</html>

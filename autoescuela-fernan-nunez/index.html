@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autoescuela Fernán Núñez – Consigue tu carnet con nosotros</title>
+  <meta name="description" content="Autoescuela en Fernán Núñez. Clases de conducir para coche, moto y camión. Alta tasa de aprobados. ¡Apúntate hoy!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #c62828;
+      --red-light: #ef5350;
+      --orange: #f57c00;
+      --red-bg: #fff3e0;
+      --dark: #1a1a1a;
+      --gray: #555;
+      --white: #fff;
+      --yellow: #ffd600;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    }
+    .logo { font-size: 1.2rem; font-weight: 800; color: var(--red); display: flex; align-items: center; gap: .5rem; }
+    .logo span { font-weight: 400; color: var(--gray); }
+    nav a.cta-nav {
+      background: var(--red); color: var(--white);
+      padding: .55rem 1.3rem; border-radius: 6px;
+      text-decoration: none; font-weight: 700; font-size: .9rem;
+      transition: background .2s;
+    }
+    nav a.cta-nav:hover { background: var(--red-light); }
+
+    .hero {
+      min-height: 90vh;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d1515 60%, #c62828 100%);
+      padding: 4rem 2rem; position: relative; overflow: hidden;
+    }
+    .hero-road {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.3));
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+    .hero-text h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; color: var(--white); margin-bottom: 1.2rem; }
+    .hero-text h1 em { font-style: normal; color: var(--yellow); }
+    .hero-text p { font-size: 1.05rem; color: #ffccbc; line-height: 1.7; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--yellow); color: var(--dark);
+      padding: .9rem 2rem; border-radius: 6px;
+      text-decoration: none; font-weight: 800; font-size: 1rem;
+      transition: transform .2s, background .2s;
+    }
+    .btn-primary:hover { background: #ffe57f; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: .9rem 2rem; border-radius: 6px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      border: 2px solid rgba(255,255,255,.4);
+      transition: border-color .2s, background .2s;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+    .hero-visual { text-align: center; font-size: 9rem; line-height: 1; }
+
+    .badges-bar {
+      background: var(--yellow); padding: 1rem 2rem;
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+    }
+    .badges-bar span { font-weight: 700; font-size: .9rem; color: var(--dark); }
+
+    .licencias { padding: 5rem 2rem; background: var(--white); }
+    .section-title { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: .5rem; }
+    .section-sub { text-align: center; color: var(--gray); font-size: 1rem; margin-bottom: 3rem; }
+    .cards { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .card {
+      border: 2px solid #eee; border-radius: 12px; padding: 2rem 1.5rem;
+      text-align: center; transition: border-color .2s, transform .2s;
+      cursor: default;
+    }
+    .card:hover { border-color: var(--red); transform: translateY(-4px); }
+    .card-icon { font-size: 2.8rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: .3rem; color: var(--red); }
+    .card .precio { font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: .5rem; }
+    .card p { font-size: .85rem; color: var(--gray); line-height: 1.5; }
+
+    .proceso { background: #fff3e0; padding: 5rem 2rem; }
+    .steps { max-width: 900px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .step { text-align: center; padding: 1.5rem 1rem; }
+    .step-num { width: 50px; height: 50px; background: var(--red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800; margin: 0 auto 1rem; }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .step p { font-size: .88rem; color: var(--gray); line-height: 1.5; }
+
+    .stats { background: var(--red); padding: 4rem 2rem; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
+    .stat h2 { font-size: 3rem; font-weight: 800; color: var(--white); }
+    .stat p { color: #ffccbc; font-size: .95rem; margin-top: .3rem; }
+
+    .ventajas { padding: 5rem 2rem; background: var(--white); }
+    .ventajas-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .ventajas-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1.5rem; }
+    .ventajas-list { list-style: none; }
+    .ventajas-list li { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1rem; font-size: .95rem; }
+    .ventajas-list li .check { color: var(--red); font-weight: 800; font-size: 1.1rem; }
+    .ventajas-list li div h4 { font-weight: 700; margin-bottom: .2rem; }
+    .ventajas-list li div p { color: var(--gray); font-size: .88rem; line-height: 1.5; }
+    .ventajas-img { text-align: center; font-size: 10rem; }
+
+    .testimonials { padding: 5rem 2rem; background: #fff3e0; }
+    .testi-grid { max-width: 900px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .testi-card { background: var(--white); border-radius: 12px; padding: 1.8rem; }
+    .stars { color: var(--orange); font-size: 1.1rem; margin-bottom: .8rem; }
+    .testi-card p { font-size: .92rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; }
+    .testi-author { font-weight: 700; font-size: .88rem; color: var(--dark); }
+
+    .cta-section { padding: 5rem 2rem; background: var(--dark); text-align: center; }
+    .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: #aaa; font-size: 1rem; margin-bottom: 2rem; }
+
+    .contact { padding: 5rem 2rem; background: var(--white); }
+    .contact-inner { max-width: 700px; margin: 0 auto; }
+    .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-item .icon { font-size: 1.8rem; }
+    .contact-item h4 { font-weight: 700; font-size: .95rem; margin-bottom: .2rem; }
+    .contact-item p { color: var(--gray); font-size: .9rem; }
+
+    footer { background: var(--dark); color: #aaa; text-align: center; padding: 1.5rem; font-size: .85rem; }
+    footer strong { color: var(--white); }
+
+    @media (max-width: 700px) {
+      .hero-inner, .ventajas-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual, .ventajas-img { display: none; }
+      .hero-btns { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🚗 Autoescuela <span>Fernán Núñez</span></div>
+  <a class="cta-nav" href="tel:+34000000000">📞 Matricúlate</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Tu carnet de conducir en <em>las mejores manos</em></h1>
+      <p>La autoescuela de referencia en Fernán Núñez. Profesores con experiencia, clases flexibles y la tasa de aprobados más alta de la zona.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:+34000000000">📞 Matricúlate ahora</a>
+        <a class="btn-outline" href="#licencias">Ver carnets</a>
+      </div>
+    </div>
+    <div class="hero-visual">🚗</div>
+  </div>
+  <div class="hero-road"></div>
+</section>
+
+<div class="badges-bar">
+  <span>✅ Carnet B – Coche</span>
+  <span>🏍️ Carnet A – Moto</span>
+  <span>🚛 Carnet C – Camión</span>
+  <span>🎓 Alta tasa de aprobados</span>
+  <span>📱 Clases online de teoría</span>
+</div>
+
+<section class="licencias" id="licencias">
+  <h2 class="section-title">Carnets que ofrecemos</h2>
+  <p class="section-sub">Consigue el permiso que necesitas con nosotros</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🚗</div>
+      <h3>Carnet B</h3>
+      <div class="precio">Coche</div>
+      <p>El más solicitado. Teoría y prácticas con coches modernos. Clases adaptadas a tu ritmo.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏍️</div>
+      <h3>Carnet A1/A2/A</h3>
+      <div class="precio">Moto</div>
+      <p>Desde moto pequeña hasta grandes cilindradas. Circuito propio para prácticas seguras.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚛</div>
+      <h3>Carnet C/CE</h3>
+      <div class="precio">Camión</div>
+      <p>Formación profesional para conductores de camión. CAP y tacógrafo incluidos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚌</div>
+      <h3>Carnet D</h3>
+      <div class="precio">Autobús</div>
+      <p>Para conductores de transporte de viajeros. Toda la formación que necesitas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <h3>Renovación</h3>
+      <div class="precio">Puntos</div>
+      <p>Recupera los puntos de tu carnet con nuestros cursos de sensibilización vial.</p>
+    </div>
+  </div>
+</section>
+
+<section class="proceso">
+  <h2 class="section-title">Cómo funciona</h2>
+  <p class="section-sub">3 pasos para tener tu carnet en manos</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Matrícula</h3>
+      <p>Ven a nuestra oficina o llámanos. Te explicamos todo y te matriculas sin complicaciones.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Teoría</h3>
+      <p>Estudia con nuestros profesores en clase o en nuestra plataforma online. Tú decides el ritmo.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Prácticas</h3>
+      <p>Clases de conducir con vehículos modernos y profesores pacientes y cualificados.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>¡Aprobado!</h3>
+      <p>Te preparamos para el examen oficial y te acompañamos hasta que tengas tu carnet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><h2>92%</h2><p>Tasa de aprobados</p></div>
+    <div class="stat"><h2>+1.200</h2><p>Alumnos formados</p></div>
+    <div class="stat"><h2>20+</h2><p>Años en Fernán Núñez</p></div>
+    <div class="stat"><h2>5</h2><p>Tipos de carnet</p></div>
+  </div>
+</section>
+
+<section class="ventajas">
+  <div class="ventajas-inner">
+    <div class="ventajas-text">
+      <h2>¿Por qué elegir nuestra autoescuela?</h2>
+      <ul class="ventajas-list">
+        <li>
+          <span class="check">✓</span>
+          <div><h4>Profesores certificados y pacientes</h4><p>Todo nuestro equipo está homologado y tiene años de experiencia enseñando a conducir.</p></div>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <div><h4>Clases de teoría online</h4><p>Estudia cuando quieras con nuestra plataforma digital. Tests ilimitados incluidos.</p></div>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <div><h4>Horarios flexibles</h4><p>Mañana, tarde y fines de semana. Nos adaptamos a tu vida.</p></div>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <div><h4>Vehículos modernos y seguros</h4><p>Coches y motos recientes con doble mando para mayor seguridad.</p></div>
+        </li>
+        <li>
+          <span class="check">✓</span>
+          <div><h4>Precio transparente</h4><p>Sin letra pequeña. Te decimos desde el inicio lo que vas a pagar.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="ventajas-img">🏍️</div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="section-title">Alumnos que ya conducen</h2>
+  <p class="section-sub">Han pasado por aquí y aprobaron a la primera</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Aprobé el teórico al primer intento y el práctico también. Los profesores son muy buenos explicando."</p>
+      <div class="testi-author">— Adrián T., 18 años, Fernán Núñez</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Intenté en otra autoescuela y no conseguía pasar. Aquí cambié y aprobé en 3 clases. Muy recomendable."</p>
+      <div class="testi-author">— Sara P., 25 años, Montilla</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"El sistema online de teoría es genial. Pude estudiar a mis horas y aprobar sin agobios."</p>
+      <div class="testi-author">— Javier G., 22 años, Fernán Núñez</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>¿Listo para conseguir tu carnet?</h2>
+  <p>Matricúlate hoy y empieza esta semana. Plazas limitadas.</p>
+  <a class="btn-primary" href="tel:+34000000000">📞 Llamar para matricularse</a>
+</section>
+
+<section class="contact" id="contacto">
+  <h2 class="section-title">Encuéntranos</h2>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Calle Principal, Fernán Núñez, Córdoba</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <div>
+          <h4>Teléfono</h4>
+          <p>+34 000 000 000</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">🕐</div>
+        <div>
+          <h4>Horario oficina</h4>
+          <p>Lun–Vie: 9:00–14:00 / 17:00–20:00<br>Sáb: 9:00–13:00</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📱</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p>+34 000 000 000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Autoescuela Fernán Núñez</strong> · Fernán Núñez, Córdoba · Todos los derechos reservados © 2025
+</footer>
+
+</body>
+</html>

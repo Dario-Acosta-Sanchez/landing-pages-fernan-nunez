@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Veterinaria Fernán Núñez</title>
+  <meta name="description" content="Tu clínica veterinaria de confianza en Fernán Núñez. Cuidamos a tu mascota como si fuera nuestra." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #2e7d32;
+      --green-light: #4caf50;
+      --green-bg: #e8f5e9;
+      --dark: #1a1a2e;
+      --gray: #555;
+      --white: #fff;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--white); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    .logo { font-size: 1.2rem; font-weight: 800; color: var(--green); display: flex; align-items: center; gap: .5rem; }
+    .logo span { font-weight: 400; color: var(--gray); }
+    nav a.cta-nav {
+      background: var(--green); color: var(--white);
+      padding: .55rem 1.3rem; border-radius: 30px;
+      text-decoration: none; font-weight: 600; font-size: .9rem;
+      transition: background .2s;
+    }
+    nav a.cta-nav:hover { background: var(--green-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, var(--green-bg) 0%, #f1f8e9 100%);
+      padding: 4rem 2rem;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .hero-text h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; color: var(--dark); margin-bottom: 1.2rem; }
+    .hero-text h1 em { font-style: normal; color: var(--green); }
+    .hero-text p { font-size: 1.1rem; color: var(--gray); line-height: 1.7; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--green); color: var(--white);
+      padding: .9rem 2rem; border-radius: 30px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: transform .2s, background .2s;
+    }
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--green);
+      padding: .9rem 2rem; border-radius: 30px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      border: 2px solid var(--green);
+      transition: background .2s, color .2s;
+    }
+    .btn-secondary:hover { background: var(--green); color: var(--white); }
+    .hero-image { text-align: center; font-size: 10rem; line-height: 1; }
+
+    /* BADGES */
+    .badges { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .badge { background: var(--white); border: 1.5px solid #c8e6c9; border-radius: 20px; padding: .4rem 1rem; font-size: .85rem; color: var(--green); font-weight: 600; }
+
+    /* SERVICES */
+    .services { padding: 5rem 2rem; background: var(--white); }
+    .section-title { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: .5rem; }
+    .section-sub { text-align: center; color: var(--gray); font-size: 1rem; margin-bottom: 3rem; }
+    .cards { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--green-bg); border-radius: 16px; padding: 2rem 1.5rem;
+      text-align: center; transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(46,125,50,.15); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; color: var(--green); }
+    .card p { font-size: .9rem; color: var(--gray); line-height: 1.6; }
+
+    /* TRUST */
+    .trust { background: var(--green); padding: 4rem 2rem; }
+    .trust-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
+    .trust-stat h2 { font-size: 3rem; font-weight: 800; color: var(--white); }
+    .trust-stat p { color: #c8e6c9; font-size: .95rem; margin-top: .3rem; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 5rem 2rem; background: #f9fbe7; }
+    .testi-grid { max-width: 900px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .testi-card { background: var(--white); border-radius: 16px; padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .stars { color: #f9a825; font-size: 1.1rem; margin-bottom: .8rem; }
+    .testi-card p { font-size: .95rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; }
+    .testi-author { font-weight: 700; font-size: .9rem; color: var(--dark); }
+
+    /* CTA */
+    .cta-section { padding: 5rem 2rem; background: var(--dark); text-align: center; }
+    .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: #aaa; font-size: 1rem; margin-bottom: 2rem; }
+    .cta-section a.btn-primary { display: inline-block; }
+
+    /* CONTACT */
+    .contact { padding: 5rem 2rem; background: var(--white); }
+    .contact-inner { max-width: 700px; margin: 0 auto; }
+    .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-item .icon { font-size: 1.8rem; }
+    .contact-item h4 { font-weight: 700; font-size: .95rem; margin-bottom: .2rem; }
+    .contact-item p { color: var(--gray); font-size: .9rem; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: #aaa; text-align: center; padding: 1.5rem; font-size: .85rem; }
+    footer strong { color: var(--white); }
+
+    @media (max-width: 700px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-image { display: none; }
+      .hero-btns { justify-content: center; }
+      .badges { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🐾 Veterinaria <span>Fernán Núñez</span></div>
+  <a class="cta-nav" href="tel:+34000000000">📞 Llamar ahora</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>La salud de tu mascota en <em>manos expertas</em></h1>
+      <p>Clínica veterinaria en el corazón de Fernán Núñez. Atención personalizada, tecnología moderna y el cariño que tu animal merece.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:+34000000000">📞 Pedir cita</a>
+        <a class="btn-secondary" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="badges">
+        <span class="badge">✅ Urgencias 24h</span>
+        <span class="badge">🏥 Cirugía</span>
+        <span class="badge">💉 Vacunación</span>
+        <span class="badge">🐶 Peluquería</span>
+      </div>
+    </div>
+    <div class="hero-image">🐕</div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <h2 class="section-title">Nuestros Servicios</h2>
+  <p class="section-sub">Todo lo que tu mascota necesita en un solo lugar</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🩺</div>
+      <h3>Consulta General</h3>
+      <p>Revisión completa, diagnóstico y seguimiento del estado de salud de tu mascota.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💉</div>
+      <h3>Vacunación</h3>
+      <p>Calendario de vacunas actualizado para perros, gatos y animales exóticos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Análisis y Diagnóstico</h3>
+      <p>Laboratorio propio con resultados rápidos. Radiografías y ecografías.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚕️</div>
+      <h3>Cirugía</h3>
+      <p>Cirugía general y especializada con equipos de anestesia modernos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🐾</div>
+      <h3>Peluquería</h3>
+      <p>Baño, corte y arreglo profesional para que tu perro siempre esté impecable.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚨</div>
+      <h3>Urgencias</h3>
+      <p>Atención de emergencias para cuando más nos necesitas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="trust-inner">
+    <div class="trust-stat"><h2>+800</h2><p>Mascotas atendidas</p></div>
+    <div class="trust-stat"><h2>10+</h2><p>Años de experiencia</p></div>
+    <div class="trust-stat"><h2>98%</h2><p>Clientes satisfechos</p></div>
+    <div class="trust-stat"><h2>24h</h2><p>Urgencias disponibles</p></div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+  <p class="section-sub">Familias de Fernán Núñez confían en nosotros</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Llevamos a nuestro golden retriever desde que era cachorro. Trato excepcional y siempre muy profesionales."</p>
+      <div class="testi-author">— María G., Fernán Núñez</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Mi gata necesitó operación urgente y la atendieron fenomenal. No me la puedo imaginar en otro sitio."</p>
+      <div class="testi-author">— Antonio L., Fernán Núñez</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"La peluquería es una maravilla. Mi perro sale siempre como nuevo y se lo pasan en grande."</p>
+      <div class="testi-author">— Lucía M., Córdoba</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>¿Tu mascota necesita atención?</h2>
+  <p>Llámanos o pasa por la clínica. Estamos aquí para ayudarte.</p>
+  <a class="btn-primary" href="tel:+34000000000">📞 Llamar ahora</a>
+</section>
+
+<section class="contact" id="contacto">
+  <h2 class="section-title">Cómo encontrarnos</h2>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div>
+          <h4>Dirección</h4>
+          <p>Calle Principal, Fernán Núñez, Córdoba</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <div>
+          <h4>Teléfono</h4>
+          <p>+34 000 000 000</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">🕐</div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lun–Vie: 9:00–14:00 / 17:00–20:00<br>Sáb: 9:00–13:00</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📱</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p>+34 000 000 000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Clínica Veterinaria Fernán Núñez</strong> · Fernán Núñez, Córdoba · Todos los derechos reservados © 2025
+</footer>
+
+</body>
+</html>
